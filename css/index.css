@@ -1,0 +1,218 @@
+/*
+* 清除默认样式 设置公用样式
+*/
+
+img {
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
+    border: 0;
+}
+
+.go {
+    position: fixed;
+    right: 40px;
+    top: 50px;
+    z-index: 1001;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.more {
+    position: fixed;
+    right: 60px;
+    bottom: 80px;
+    z-index: 1001;
+    animation: more 0.3s linear infinite alternate;
+}
+
+.content {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    /*以自身宽高移动*/
+    width: 900px;
+    height: 600px;
+    text-align: center;
+    background: rgba(0, 0, 0, .5);
+}
+
+@keyframes more {
+    from {
+        margin-bottom: 80px;
+    }
+    to {
+        margin-bottom: 60px;
+    }
+}
+
+
+/*第一屏动画*/
+
+.screen01 {
+    background: url(/images/01-bg.png) no-repeat bottom center;
+}
+
+.screen01 .fly {
+    position: absolute;
+    top: -100px;
+    right: -60px;
+    animation: screen01 1s infinite alternate
+}
+
+.screen01 .goods {
+    position: absolute;
+    left: 50%;
+    bottom: 100px;
+    margin-left: -412px;
+}
+
+.screen01 .sofa {
+    position: absolute;
+    left: 170px;
+    top: 120px;
+    animation: screen01 .5s infinite alternate
+}
+
+@keyframes screen01 {
+    0% {}
+    100% {
+        transform: translateY(40px);
+    }
+}
+
+
+/*第二屏动画开始*/
+
+.screen02 {
+    background: url(/images/02-bg.png) no-repeat bottom center;
+}
+
+.screen02 .title .text01 {}
+
+.screen02 .title .text02 {
+    position: absolute;
+    opacity: 0;
+}
+
+.screen02 .box {
+    position: absolute;
+    opacity: 0;
+    right: 171px;
+    top: 110px;
+    /*    transform: scale(0.7);
+*/
+    transform-origin: right bottom;
+}
+
+.screen02 .key {
+    position: absolute;
+    left: 100px;
+    top: 4px;
+    opacity: 0;
+}
+
+.screen02 .sofa-list {
+    position: absolute;
+    left: 50%;
+    top: 170px;
+    margin-left: -220px;
+    transform: scale(0);
+    transform-origin: right bottom;
+}
+
+.screen02 .unique {
+    transform: scale(0.5);
+    position: absolute;
+    left: 292px;
+    top: 132px;
+    opacity: 1;
+    z-index: 1001;
+}
+
+.screen02 .test{
+    position: absolute;
+    left: 250px;
+    top: 150px;
+    width: 500px;
+    height: 500px;
+    background-color: hotpink;
+    z-index: 10086;
+}
+/*当页面进入(增加class now)时加载动画*/
+.screen02.out .test{
+    transform: translateY(250px);
+    transition: all 10s;
+}
+
+/*头部文字动画*/
+
+.screen02.in .title .text01 {
+    position: absolute;
+    opacity: 0;
+}
+
+.screen02.in .title .text02 {
+    position: static;
+    opacity: 1;
+    transition: opacity 1s linear;
+}
+
+
+/*商品列表动画 注意 transform-origin*/
+
+.screen02.in .sofa-list {
+    transform: scale(1);
+    transition: all 1s linear 3s;
+}
+
+
+
+
+/*搜索框动画*/
+
+.screen02.in .box {
+    animation: seach 3s linear 1s forwards;
+}
+
+.screen02.in .key {
+    opacity: 1;
+    transition: opacity 1s linear 2s;
+}
+
+@keyframes seach {
+    0% {
+        opacity: 1;
+        transform: translate(2000px, 130px);
+    }
+    33% {
+        transform: translate(-180px, 130px);
+    }
+    66% {
+        transform: translate(-180px, 130px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(0.7);
+    }
+}
+/*页面离开动画*/
+.screen02.out .unique{
+    animation: sofa02 1s linear forwards;
+}
+@keyframes sofa02 {
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 1;
+        /*沙发下移*/
+        transform: translate(-80px,700px);
+    }
+}
+/*第三屏动画*/
+.screen03 {
+    background: url(/images/03-bg.png) no-repeat center bottom;
+}
